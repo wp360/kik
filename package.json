@@ -18,10 +18,17 @@
   "homepage": "https://github.com/wp360/kik#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
     "dependable": "^1.1.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-promise-router": "^3.0.1",
-    "lodash": "^4.17.5"
+    "express-session": "^1.15.6",
+    "express-validator": "^5.0.1",
+    "lodash": "^4.17.5",
+    "mongoose": "^5.0.6",
+    "passport": "^0.4.0"
   }
 }
