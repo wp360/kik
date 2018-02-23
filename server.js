@@ -38,6 +38,9 @@ container.resolve(function(users){
     }
 
     function ConfigureExpress(app){
+        // 本地验证策略
+        require('./passport/passport-local');
+
         app.use(express.static('public'));
         app.set('view engine','ejs');
         app.use(bodyParser.json());

@@ -19,7 +19,7 @@ git push -u origin master
 
 `npm i express-promise-router --save`
 
-`npm i cookie-parser express-validator express-session connect-mongo connect-flash mongoose passport--save`
+`npm i cookie-parser express-validator express-session connect-mongo connect-flash mongoose passport passport-local --save`
 
 #### 备注：
 * bodyParser用于解析客户端请求的body中的内容,内部使用JSON编码处理,url编码处理以及对于文件的上传处理.
@@ -57,3 +57,12 @@ const MongoStore = require('connect-mongo')(session)
     * passport是使用”策略“来验证请求，策略是passport中最重要的概念。passport模块本身不能做认证，所有的认证方法都以策略模式封装为插件，需要某种认证时将其添加到package.json即可。
 
     * 策略模式是一种设计模式，它将算法和对象分离开来，通过加载不同的算法来实现不同的行为，适用于相关类的成员相同但行为不同的场景，比如在passport中，认证所需的字段都是用户名、邮箱、密码等，但认证方法是不同的。
+
+* passport-local 本地验证策略
+[参考文章：使用passport-local-mongoose、passport实现用户验证](http://blog.csdn.net/u011750507/article/details/51025480)
+
+[参考文章：Express结合Passport实现登陆认证](http://blog.fens.me/nodejs-express-passport/)
+
+[参考文章：Koa集成权限认证中间件之Passport](http://blog.csdn.net/a1035434631/article/details/78752271)
+
+`npm i bcrypt-nodejs --save`
