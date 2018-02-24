@@ -66,3 +66,5 @@ const MongoStore = require('connect-mongo')(session)
 [参考文章：Koa集成权限认证中间件之Passport](http://blog.csdn.net/a1035434631/article/details/78752271)
 
 `npm i bcrypt-nodejs --save`
+
+[参考文章：nodejs 搭建 RESTful API 服务器的常用包及其简介](https://www.cnblogs.com/lihuanqing/p/7229878.html)
