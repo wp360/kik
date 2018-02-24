@@ -17,7 +17,7 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use('local.signup',new LocalStrategy({
-    usenameField: 'email',
+    usernameField: 'email',
     passwordFiled: 'passowrd',
     passReqToCallback: true
 },(req,email,password,done) => {
@@ -37,5 +37,25 @@ passport.use('local.signup',new LocalStrategy({
         newUser.save((err) => {
             done(null,newUser);
         });
+    });
+}));
+
+passport.use('local.login', new LocalStrategy({
+    usernameField: 'email',
+    passwordFiled: 'passowrd',
+    passReqToCallback: true
+}, (req, email, password, done) => {
+    User.findOne({
+        'email': email
+    }, (err, user) => {
+        if (err) {
+            return done(err);
+        }
+        const messages = [];
+        if(!user || !user.validUserPassword(password)){
+            messages.push('邮箱不存在或密码错误！');
+            return done(null, false, req.flash('error',messages));
+        }
+        return done(null,user);
     });
 }));

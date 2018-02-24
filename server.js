@@ -18,7 +18,9 @@ container.resolve(function(users,_){
     // 连接数据库
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://admin:abc123@ds039684.mlab.com:39684/job-data');//mongodb://localhost:27017/数据库名称
-
+    mongoose.connection.on('connected',function(){
+        console.log('数据库连接成功');
+    });
     const app = SetupExpress();
 
     function SetupExpress(){
@@ -52,7 +54,7 @@ container.resolve(function(users,_){
             resave: true,
             saveUninitialized: true,
             store: new MongoStore({mongooseConnection:mongoose.connection})
-        }))
+        }));
 
         app.use(flash());
 

@@ -68,3 +68,6 @@ const MongoStore = require('connect-mongo')(session)
 `npm i bcrypt-nodejs --save`
 
 [参考文章：nodejs 搭建 RESTful API 服务器的常用包及其简介](https://www.cnblogs.com/lihuanqing/p/7229878.html)
+
+`app.locals._ = _;`
+[参考文章：Express 模板传值对象app.locals、res.locals](https://itbilu.com/nodejs/npm/Ny0k0TKP-.html)
