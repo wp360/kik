@@ -21,7 +21,7 @@ git push -u origin master
 
 `npm i cookie-parser express-validator express-session connect-mongo connect-flash mongoose passport passport-local --save`
 
-#### 备注：
+## 知识点：
 * bodyParser用于解析客户端请求的body中的内容,内部使用JSON编码处理,url编码处理以及对于文件的上传处理.
 
 * dependable [https://www.npmjs.com/package/dependable](https://www.npmjs.com/package/dependable)
@@ -61,6 +61,10 @@ const MongoStore = require('connect-mongo')(session)
 * passport-local 本地验证策略
 [参考文章：使用passport-local-mongoose、passport实现用户验证](http://blog.csdn.net/u011750507/article/details/51025480)
 
+> 关于网站使用QQ、weibo等第三方登录，功能未添加(后期有需要再补，可先参考下文)
+
+[参考文章：使用OAuth2.0协议的github、QQ、weibo第三方登录接入总结](https://www.cnblogs.com/gabrielchen/p/5800225.html)
+
 [参考文章：Express结合Passport实现登陆认证](http://blog.fens.me/nodejs-express-passport/)
 
 [参考文章：Koa集成权限认证中间件之Passport](http://blog.csdn.net/a1035434631/article/details/78752271)
@@ -71,3 +75,21 @@ const MongoStore = require('connect-mongo')(session)
 
 `app.locals._ = _;`
 [参考文章：Express 模板传值对象app.locals、res.locals](https://itbilu.com/nodejs/npm/Ny0k0TKP-.html)
+
+#### 文件上传
+`npm i formidable --save`
+
+> formidable:用于解析表单数据的Node.js模块，特别是文件上传。
+
+[参考文章：Node.js的Formidable模块的使用](http://www.cnblogs.com/yuanke/archive/2016/02/26/5221853.html)
+
+[***重点参考文章：通过Ajax方式上传文件，使用FormData进行Ajax请求](http://www.cnblogs.com/yuanke/archive/2016/02/26/5221853.html)
+
+```html
+<form action="/dashboard" method="post" enctype="multipart/form-data">
+```
+> enctype="multipart/form-data" => 以二进制数据流的方式传输
+
+[参考文章：enctype="multipart/form-data"设置与不设置的区别](http://blog.csdn.net/rock_lv/article/details/52596782)
+
+> 关于图片等文件上传服务器，服务器未连接(本地上传功能已经实现，后期有需要再补服务器对接)

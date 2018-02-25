@@ -14,7 +14,7 @@ const passport = require('passport');
 const container = require('./container');
 
 
-container.resolve(function(users,_){
+container.resolve(function(users,_,admin){
     // 连接数据库
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://admin:abc123@ds039684.mlab.com:39684/job-data');//mongodb://localhost:27017/数据库名称
@@ -35,6 +35,8 @@ container.resolve(function(users,_){
         // 建立路由
         const router = require('express-promise-router')();
         users.SetRouting(router);
+        // 后台管理
+        admin.SetRouting(router);
 
         app.use(router);
     }

@@ -7,8 +7,8 @@ const userSchema = mongoose.Schema({
     email: {type:String,unique:true},
     password: {type:String,default: ''},
     userImage: {type:String,default: 'default.png'},
-    weixin: {type:String,default: ''},
-    wxTokens: Array,
+    weibo: {type:String,default: ''},
+    wbTokens: Array,
     qq: {type:String,default: ''},
     qqTokens: Array
 });
