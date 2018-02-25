@@ -6,6 +6,7 @@ const simpleDependecies = [
     ['_','lodash'],
     ['passport','passport'],
     ['formidable','formidable'],
+    ['async','async'],
     ['Group','./models/groups']
 ];
 

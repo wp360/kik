@@ -21,6 +21,21 @@ git push -u origin master
 
 `npm i cookie-parser express-validator express-session connect-mongo connect-flash mongoose passport passport-local --save`
 
+## 操作步骤
+* 以首页为例
+1. controllers文件夹下新建对应逻辑代码(如：home.js)
+2. 添加对应服务
+```js
+// server.js
+container.resolve(function(users,_,admin,home){ // 添加home
+
+// ... 省略
+
+// 首页
+home.SetRouting(router);
+```
+3. 页面制作(home.ejs)
+
 ## 知识点：
 * bodyParser用于解析客户端请求的body中的内容,内部使用JSON编码处理,url编码处理以及对于文件的上传处理.
 
@@ -93,3 +108,13 @@ const MongoStore = require('connect-mongo')(session)
 [参考文章：enctype="multipart/form-data"设置与不设置的区别](http://blog.csdn.net/rock_lv/article/details/52596782)
 
 > 关于图片等文件上传服务器，服务器未连接(本地上传功能已经实现，后期有需要再补服务器对接)
+
+`npm i async --save`
+> async模块是为了解决嵌套金字塔,和异步流程控制而生
+[参考文章：nodejs中的async模块学习](http://blog.csdn.net/zzwwjjdj1/article/details/51857959)
+
+[参考文章：$.ajax()方法参数详解](https://www.cnblogs.com/prefect/p/5632986.html)
+
+#### MongoDB聚合(aggregate)
+> MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。
+[参考文档：MongoDB聚合](http://www.runoob.com/mongodb/mongodb-aggregate.html)
