@@ -1,5 +1,12 @@
 # 项目说明：
-> Kik 即手机通信录的社交软件，可基于本地通讯录直接建立与联系人的连接，并在此基础上实现免费短信聊天、来电大头贴、个人状态同步等功能。
+1. 项目启动 node(nodemon) server.js
+2. 项目相关页面
+* 登录页 http://localhost:3000/
+* 注册页 http://localhost:3000/signup
+* 首页   http://localhost:3000/home
+* 群聊   http://localhost:3000/group/:name (http://localhost:3000/group/Vue.js)
+* 管理页 http://localhost:3000/dashboard (上传群组信息)
+
 ## git 操作
 #### https://github.com 新建项目
 ```html
@@ -21,10 +28,9 @@ git push -u origin master
 
 `npm i cookie-parser express-validator express-session connect-mongo connect-flash mongoose passport passport-local --save`
 
-## 操作步骤
+## 页面构建
 * 以首页为例
-1. controllers文件夹下新建对应逻辑代码(如：home.js)
-2. 添加对应服务
+1. 添加对应服务
 ```js
 // server.js
 container.resolve(function(users,_,admin,home){ // 添加home
@@ -34,6 +40,7 @@ container.resolve(function(users,_,admin,home){ // 添加home
 // 首页
 home.SetRouting(router);
 ```
+2. controllers文件夹下新建对应逻辑代码(如：home.js)
 3. 页面制作(home.ejs)
 
 ## 知识点：
@@ -74,6 +81,7 @@ const MongoStore = require('connect-mongo')(session)
     * 策略模式是一种设计模式，它将算法和对象分离开来，通过加载不同的算法来实现不同的行为，适用于相关类的成员相同但行为不同的场景，比如在passport中，认证所需的字段都是用户名、邮箱、密码等，但认证方法是不同的。
 
 * passport-local 本地验证策略
+
 [参考文章：使用passport-local-mongoose、passport实现用户验证](http://blog.csdn.net/u011750507/article/details/51025480)
 
 > 关于网站使用QQ、weibo等第三方登录，功能未添加(后期有需要再补，可先参考下文)
@@ -89,6 +97,7 @@ const MongoStore = require('connect-mongo')(session)
 [参考文章：nodejs 搭建 RESTful API 服务器的常用包及其简介](https://www.cnblogs.com/lihuanqing/p/7229878.html)
 
 `app.locals._ = _;`
+
 [参考文章：Express 模板传值对象app.locals、res.locals](https://itbilu.com/nodejs/npm/Ny0k0TKP-.html)
 
 #### 文件上传
@@ -117,4 +126,12 @@ const MongoStore = require('connect-mongo')(session)
 
 #### MongoDB聚合(aggregate)
 > MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。有点类似sql语句中的 count(*)。
+
 [参考文档：MongoDB聚合](http://www.runoob.com/mongodb/mongodb-aggregate.html)
+
+#### socket.io
+`npm i socket.io --save`
+
+> Socket.io实际上是WebSocket的父集，Socket.io封装了WebSocket和轮询等方法，它会根据情况选择方法来进行通讯。
+
+[参考文章：socket.io简易教程(群聊，发送图片，分组，私聊)](http://blog.csdn.net/neuq_zxy/article/details/77531126)

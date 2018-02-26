@@ -31,8 +31,8 @@ module.exports = function(async, Group, _){
 
                 // 排序
                 const regionSort = _.sortBy(res2,'_id');
-                console.log(regionSort);
-                res.render('home',{title: 'KIK聊天通讯 | 首页',data:dataChunk,region:regionSort}); // data:res1 全部数据 dataChunk 分组数据
+                // console.log(regionSort);
+                res.render('home',{title: 'KIK聊天通讯 | 首页',user:req.user,data:dataChunk,region:regionSort}); // data:res1 全部数据 dataChunk 分组数据
             })
         }
     }

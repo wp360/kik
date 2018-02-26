@@ -10,7 +10,19 @@ const userSchema = mongoose.Schema({
     weibo: {type:String,default: ''},
     wbTokens: Array,
     qq: {type:String,default: ''},
-    qqTokens: Array
+    qqTokens: Array,
+    sentRequest: [{
+        username: {type:String,default: ''}
+    }],
+    request: [{
+        userId: {type: mongoose.Schema.Types.ObjectId,ref:'User'},
+        username: {type:String,default: ''}
+    }],
+    friendsList: [{
+        friendId: {type: mongoose.Schema.Types.ObjectId,ref:'User'},
+        friendName: {type:String,default: ''}
+    }],
+    totalRequest: {type: Number,default: 0}
 });
 
 // 加密

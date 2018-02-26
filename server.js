@@ -11,10 +11,13 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 
+const socketIO = require('socket.io');
+const {Users} = require('./helpers/UsersClass');
+
 const container = require('./container');
 
 
-container.resolve(function(users,_,admin,home){
+container.resolve(function(users,_,admin,home,group){
     // 连接数据库
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://admin:abc123@ds039684.mlab.com:39684/job-data');//mongodb://localhost:27017/数据库名称
@@ -26,11 +29,15 @@ container.resolve(function(users,_,admin,home){
     function SetupExpress(){
         const app = express();
         const server = http.createServer(app);
+        const io = socketIO(server);
         server.listen(3000,function(){
             console.log('服务监听端口3000');
         });
 
-        ConfigureExpress(app);
+        ConfigureExpress(app,io);
+
+        require('./socket/groupchat')(io,Users);
+        require('./socket/friend')(io, Users);
 
         // 建立路由
         const router = require('express-promise-router')();
@@ -39,11 +46,13 @@ container.resolve(function(users,_,admin,home){
         admin.SetRouting(router);
         // 首页
         home.SetRouting(router);
-        
+        // 群聊
+        group.SetRouting(router);
+
         app.use(router);
     }
 
-    function ConfigureExpress(app){
+    function ConfigureExpress(app,io){
         // 本地验证策略
         require('./passport/passport-local');
 
